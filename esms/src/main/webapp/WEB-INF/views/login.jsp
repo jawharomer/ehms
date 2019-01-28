@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html>
 <head>
@@ -27,7 +26,7 @@ td {
 	text-align: center;
 }
 </style>
-<c:if test="${pageContext.response.locale=='ar'}">
+<c:if test="${pageContext.response.locale==\"ar\"}">
 	<style type="text/css">
 * {
 	direction: rtl;

@@ -6,9 +6,9 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<c:set var="preCache"><%=32/*LocalDateTime.now()*/%></c:set>
+<c:set var="preCache"><%=LocalDateTime.now()%></c:set>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 <tiles:importAttribute name="requiredCSSFiles" />
 <c:if test="${!empty requiredCSSFiles}">
 	<c:forEach var="item" items="${requiredCSSFiles}">
-	<c:if test="${pageContext.response.locale=='ar'&& item=='bootstrap'}">
+		<c:if test="${pageContext.response.locale=='ar'&& item=='bootstrap'}">
 			<c:set var="item" value="bootstrap_rtl" />
 		</c:if>
 		<link href="<c:url value="/resources/css/${item}.css?${preCache}" />"
@@ -76,8 +76,17 @@ body {
 	<tiles:importAttribute name="requiredJSFiles" />
 	<c:if test="${!empty requiredJSFiles}">
 		<c:forEach var="item" items="${requiredJSFiles}">
-			<script type="text/javascript"
-				src="<c:url value='/resources/js/${item}.js?${preCache}' />"></script>
+			<c:choose>
+				<c:when test="${item=='jsLang'}">
+					<script type="text/javascript"
+						src="<c:url value='/${item}.js?${preCache}' />"></script>
+				</c:when>
+				<c:otherwise>
+					<script type="text/javascript"
+						src="<c:url value='/resources/js/${item}.js?${preCache}' />"></script>
+				</c:otherwise>
+			</c:choose>
+
 		</c:forEach>
 	</c:if>
 

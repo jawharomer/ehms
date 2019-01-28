@@ -18,7 +18,7 @@
 			value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />
 
 		<put-attribute name="rightToLeftCSS"
-	value="rightToLeftCSS" />
+			value="rightToLeftCSS" />
 
 		<put-list-attribute name="requiredCSSFiles">
 			<add-attribute value="bootstrap" />
@@ -651,6 +651,42 @@
 			<add-attribute value="angular" />
 			<add-attribute value="app" />
 			<add-attribute value="adminVendors" />
+		</put-list-attribute>
+
+	</definition>
+
+
+	<!-- PriceCategories -->
+	<!-- PriceCategories -->
+	<!-- PriceCategories -->
+	<!-- PriceCategories -->
+	<definition name="priceCategories" extends="adminRoot">
+		<put-attribute name="title" value="PriceCategories" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/root.jsp" />
+		<put-attribute name="adminBody"
+			value="/WEB-INF/views/priceCategory/priceCategories.jsp"
+			cascade="true" />
+		<put-list-attribute name="requiredCSSFiles">
+			<add-attribute value="bootstrap" />
+			<add-attribute value="font-awesome" />
+			<add-attribute value="jquery-ui" />
+			<add-attribute value="jquery-ui.theme" />
+			<add-attribute value="app" />
+			<add-attribute value="admin" />
+			<add-attribute value="priceCategories" />
+		</put-list-attribute>
+
+		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
+			<add-attribute value="jquery" />
+			<add-attribute value="jquery-ui" />
+			<add-attribute value="jquery.serializeObject" />
+			<add-attribute value="jquery.serializejson" />
+			<add-attribute value="bootstrap" />
+			<add-attribute value="angular" />
+			<add-attribute value="app" />
+			<add-attribute value="priceCategories" />
 		</put-list-attribute>
 
 	</definition>

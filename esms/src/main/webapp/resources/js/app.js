@@ -1,9 +1,38 @@
-var $$ContextURL = "/phms";
+var $$ContextURL = "/esms";
 
 $.datepicker.setDefaults({
 	changeMonth : true,
 	changeYear : true
 });
+
+function cusConfirm() {
+	var deferred=$.Deferred();
+	console.log("cusConfirm->fired");
+	$('<div></div>').appendTo('body').html(`
+	<p>
+	${js_app_confirm}
+	</p>
+	`).dialog({
+				title : js_app_confirmWindow,
+				zIndex : 10000,
+				autoOpen : true,
+				width : '300',
+				resizable : false,
+				buttons : {
+					[js_app_yes] : function() {
+						deferred.resolve(true);
+						$(this).dialog("close");
+					},
+					[js_app_no] : function() {
+						$(this).dialog("close");
+					}
+				},
+				close : function(event, ui) {
+					$(this).remove();
+				}
+			});
+	return deferred.promise();
+}
 
 $(document).tooltip();
 

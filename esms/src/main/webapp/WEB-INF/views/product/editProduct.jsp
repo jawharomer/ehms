@@ -1,6 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 
 <div id="edit-product-container">
 
@@ -10,53 +12,24 @@
 		<table>
 			<tbody>
 				<tr>
-					<td class="text-left">Code</td>
+					<td class="text-left"><spring:message code="editProduct.code" /></td>
 					<td><sf:input class="form-control" path="code" /></td>
 					<td><sf:errors path="code" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">Name</td>
+					<td class="text-left"><spring:message code="editProduct.name" /></td>
 					<td><sf:input class="form-control" path="name" /></td>
 					<td><sf:errors path="name" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">Country</td>
-					<td><sf:select class="form-control" path="country">
-							<c:forEach items="${countries}" var="item">
-								<c:choose>
-									<c:when test="${item.code==product.country}">
-										<option selected="selected" value="${item.code}">${item.name}</option>
-									</c:when>
-									<c:otherwise>
-										<option value="${item.code}">${item.name}</option>
-									</c:otherwise>
-								</c:choose>
-
-							</c:forEach>
-
-						</sf:select></td>
-					<td><sf:errors class="text-wrap" path="country" /></td>
-				</tr>
-
-
-				<tr>
-					<td class="text-left">Scientific Name</td>
-					<td><sf:input class="form-control" path="scientificName" /></td>
-					<td><sf:errors class="text-wrap" path="scientificName" /></td>
-				</tr>
-
-				<tr>
-					<td class="text-left">Profit</td>
-					<td><sf:input class="form-control" path="profit" /></td>
-					<td><sf:errors path="profit" /></td>
-				</tr>
-
-				<tr>
-					<td class="text-left">unitType</td>
-					<td><select id="productUnit"  onchange="changeProductUnit()" class="form-control" name="productUnitType[id]">
-							<option value="">Choose</option>
+					<td class="text-left"><spring:message
+							code="editProduct.unitType" /></td>
+					<td><select id="productUnit" onchange="changeProductUnit()"
+						class="form-control" name="productUnitType[id]">
+							<option value=""><spring:message
+									code="editProduct.choose" /></option>
 							<c:forEach items="${productUnitTypes}" var="item">
 								<c:if test="${product.productUnitType.id==item.id}">
 									<option selected="selected" value="${item.id}">${item.name}</option>
@@ -76,14 +49,16 @@
 
 
 				<tr>
-					<td class="text-left">Packet Size</td>
+					<td class="text-left"><spring:message
+							code="editProduct.packetSize" /></td>
 					<td><sf:input type="number" class="form-control"
 							path="packetSize" /></td>
 					<td><sf:errors path="packetSize" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">Category</td>
+					<td class="text-left"><spring:message
+							code="editProduct.category" /></td>
 					<td><select class="form-control" name="productCategory[id]">
 							<option value="">Choose</option>
 							<c:forEach items="${productCategories}" var="item">
@@ -95,15 +70,15 @@
 								</c:if>
 							</c:forEach>
 
-
 					</select></td>
 					<td><sf:errors path="productCategory" /> <sf:errors
 							path="productCategory.id" /></td>
 				</tr>
 
 				<tr>
-					<td><input class="btn btn-outline-warning" type="submit"
-						value="Edit"></td>
+					<td><button class="btn btn-warning" type="submit">
+							<i class="fa fa-edit"></i>
+						</button></td>
 				</tr>
 
 			</tbody>
@@ -118,7 +93,7 @@
 
 <script>
 	var csrf = '${_csrf.token}';
-	
+
 	function changeProductUnit() {
 		console.log("changeProductUnit->fired");
 		var unitType = $('#productUnit option:selected').text();
@@ -131,8 +106,7 @@
 		}
 
 	}
-	
-	
+
 	function modalEditProduct(event) {
 		console.log("modalEditProduct->fired");
 		event.preventDefault();

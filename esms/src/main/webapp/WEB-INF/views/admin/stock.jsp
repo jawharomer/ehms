@@ -1,9 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div>
 
-	<h2>Stock</h2>
+	<h2>
+		<spring:message code="stock.title" />
+	</h2>
 
 	<div id="cus-add-div">
 		<button id="cus-btn-addstudent" onclick="getAddProduct()"
@@ -17,13 +20,14 @@
 	<table id="stockTable" class="display nowrap">
 		<thead>
 			<tr>
-				<th>Code</th>
-				<th>Category</th>
-				<th>UnitType</th>
-				<th>StockLevel</th>
-				<th>Cost</th>
-				<th>Packet Size</th>
-				<th class="cus-not-export">Function</th>
+				<th><spring:message code="stock.code" /></th>
+				<th><spring:message code="stock.name" /></th>
+				<th><spring:message code="stock.category" /></th>
+				<th><spring:message code="stock.unitType" /></th>
+				<th><spring:message code="stock.stockLevel" /></th>
+				<th><spring:message code="stock.cost" /></th>
+				<th><spring:message code="stock.packetSize" /></th>
+				<th class="cus-not-export"><spring:message code="stock.function" /></th>
 			</tr>
 		</thead>
 		<tbody>

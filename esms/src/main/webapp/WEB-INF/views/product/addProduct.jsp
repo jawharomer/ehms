@@ -1,33 +1,38 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div id="add-product-container" style="padding: 5px; overflow: auto">
 
-	<h4>Add new Product</h4>
+	<h4>
+		<spring:message code="addProduct.title" />
+	</h4>
 
 	<sf:form id="add-product-form" method="POST" commandName="product"
 		onsubmit="addProduct(event)">
 		<table>
 			<tbody>
 				<tr>
-					<td class="text-left">Code</td>
+					<td class="text-left"><spring:message code="addProduct.code" /></td>
 					<td><sf:input class="form-control" path="code" /></td>
 					<td><sf:errors path="code" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">Name</td>
+					<td class="text-left"><spring:message code="addProduct.name" /></td>
 					<td><sf:input class="form-control" path="name" /></td>
 					<td><sf:errors class="text-wrap" path="name" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">unitType</td>
+					<td class="text-left"><spring:message
+							code="addProduct.unitType" /></td>
 					<td><select id="productUnit" onchange="changeProductUnit()"
 						class="form-control" name="productUnitType[id]"
 						value="${product.productUnitType.id}">
-							<option value="">Choose</option>
+							<option value=""><spring:message
+									code="addProduct.choose" /></option>
 							<c:forEach items="${productUnitTypes}" var="item">
 								<option value="${item.id}">${item.name}</option>
 							</c:forEach>
@@ -38,17 +43,20 @@
 
 
 				<tr>
-					<td class="text-left">Packet Size</td>
+					<td class="text-left"><spring:message
+							code="addProduct.packetSize" /></td>
 					<td><sf:input disabled="true" type="number"
 							class="form-control" path="packetSize" /></td>
 					<td><sf:errors path="packetSize" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">Category</td>
+					<td class="text-left"><spring:message
+							code="addProduct.category" /></td>
 					<td><select class="form-control" name="productCategory[id]"
 						value="${product.productCategory.id}">
-							<option value="">Choose</option>
+							<option value=""><spring:message
+									code="addProduct.choose" /></option>
 							<c:forEach items="${productCategories}" var="item">
 								<option value="${item.id}">${item.name}</option>
 							</c:forEach>
@@ -58,8 +66,9 @@
 				</tr>
 
 				<tr>
-					<td><input class="btn btn-outline-primary" type="submit"
-						value="Adding"></td>
+					<td><button class="btn btn-outline-primary" type="submit">
+							<i class="fa fa-plus"></i>
+						</button></td>
 				</tr>
 
 			</tbody>

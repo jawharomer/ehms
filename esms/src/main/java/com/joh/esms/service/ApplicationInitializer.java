@@ -23,8 +23,7 @@ public class ApplicationInitializer {
 	public void contextRefreshedEvent() {
 		logger.info("Insert component into database");
 
-		logger.info("check=" + ((Collection<ProductUnitType>) productUnitTypeService.findAll()).size());
-
+	
 		if (((Collection<ProductUnitType>) productUnitTypeService.findAll()).size() == 0) {
 			ProductUnitType productUnitType1 = new ProductUnitType();
 			productUnitType1.setName("رزمة");

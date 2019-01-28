@@ -1,7 +1,5 @@
 package com.joh.esms.controller;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.joh.esms.domain.model.ProductD;
-import com.joh.esms.model.Country;
 import com.joh.esms.model.Product;
 import com.joh.esms.model.ProductCategory;
 import com.joh.esms.model.ProductUnitType;
@@ -52,13 +49,10 @@ public class ProductController {
 
 		logger.info("productCategories=" + productCategories);
 
-		List<Country> countries = reportService.findAllCountry();
-
 		Iterable<ProductUnitType> productUnitTypes = productUnitTypeService.findAll();
 		logger.info("productUnitTypes=" + productUnitTypes);
 
 		model.addAttribute("productCategories", productCategories);
-		model.addAttribute("countries", countries);
 		model.addAttribute("productUnitTypes", productUnitTypes);
 
 		model.addAttribute("product", new Product());
@@ -80,13 +74,11 @@ public class ProductController {
 
 			logger.info("productCategories=" + productCategories);
 
-			List<Country> countries = reportService.findAllCountry();
-
 			Iterable<ProductUnitType> productUnitTypes = productUnitTypeService.findAll();
 			logger.info("productUnitTypes=" + productUnitTypes);
 
 			model.addAttribute("productCategories", productCategories);
-			model.addAttribute("countries", countries);
+
 			model.addAttribute("productUnitTypes", productUnitTypes);
 
 			model.addAttribute("product", product);
@@ -115,10 +107,7 @@ public class ProductController {
 
 		logger.info("productCategories=" + productCategories);
 
-		List<Country> countries = reportService.findAllCountry();
-
 		model.addAttribute("productCategories", productCategories);
-		model.addAttribute("countries", countries);
 
 		Iterable<ProductUnitType> productUnitTypes = productUnitTypeService.findAll();
 		logger.info("productUnitTypes=" + productUnitTypes);
@@ -149,10 +138,6 @@ public class ProductController {
 			Iterable<ProductUnitType> productUnitTypes = productUnitTypeService.findAll();
 			logger.info("productUnitTypes=" + productUnitTypes);
 			model.addAttribute("productUnitTypes", productUnitTypes);
-
-			List<Country> countries = reportService.findAllCountry();
-			;
-			model.addAttribute("countries", countries);
 
 			model.addAttribute("product", product);
 			return "product/editProduct";

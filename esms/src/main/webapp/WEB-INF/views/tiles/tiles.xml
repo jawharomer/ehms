@@ -28,6 +28,7 @@
 
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 		</put-list-attribute>
 
 
@@ -52,6 +53,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -82,6 +84,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -122,6 +125,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -154,6 +158,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -189,6 +194,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -221,6 +227,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -254,6 +261,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -297,6 +305,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -341,6 +350,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -385,6 +395,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -426,6 +437,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -458,6 +470,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -491,6 +504,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -524,6 +538,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -558,6 +573,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -602,6 +618,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />
@@ -643,6 +660,7 @@
 		</put-list-attribute>
 
 		<put-list-attribute name="requiredJSFiles">
+			<add-attribute value="jsLang" />
 			<add-attribute value="jquery" />
 			<add-attribute value="jquery-ui" />
 			<add-attribute value="jquery.serializeObject" />

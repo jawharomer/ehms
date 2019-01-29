@@ -8,6 +8,7 @@ public class ProductD {
 	private String unitType;
 	private Integer stockLevel;
 	private Double cost;
+	private Double price;
 	private String category;
 	private Integer packetSize;
 	private Integer productStepUpId;
@@ -82,6 +83,14 @@ public class ProductD {
 
 	public void setProductStepUpId(Integer productStepUpId) {
 		this.productStepUpId = productStepUpId;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	@Override

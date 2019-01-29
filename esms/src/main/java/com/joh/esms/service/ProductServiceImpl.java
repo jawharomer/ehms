@@ -10,9 +10,12 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.joh.esms.dao.PriceCategoryDAO;
 import com.joh.esms.dao.ProductDAO;
 import com.joh.esms.domain.model.ProductD;
+import com.joh.esms.exception.CusDataIntegrityViolationException;
 import com.joh.esms.exception.ItemExistsException;
+import com.joh.esms.model.PriceCategory;
 import com.joh.esms.model.Product;
 
 @Service
@@ -20,6 +23,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductDAO productDAO;
+
+	@Autowired
+	private PriceCategoryDAO priceCategoryDAO;
 
 	@Override
 	public Product findOne(int id) {
@@ -34,9 +40,19 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	@Transactional
 	public Product save(Product product) {
+
+		if (product.getProductUnitType() != null && product.getProductUnitType().getId() == 1
+				&& (product.getPacketSize() == null || product.getPacketSize() <= 0)) {
+			throw new CusDataIntegrityViolationException("Packet size is not set");
+		} else {
+			product.setPacketSize(null);
+		}
+
 		try {
-			// pack id=2
-			if (product.getProductUnitType().getId() != null && product.getProductUnitType().getId() != 2) {
+			product.getProductPriceCategories().removeIf(e -> e.getPrice() == null || e.getPrice() == 0);
+
+			// pack id=1
+			if (product.getProductUnitType().getId() != null && product.getProductUnitType().getId() != 1) {
 				product.setPacketSize(null);
 			}
 			return productDAO.save(product);
@@ -63,11 +79,14 @@ public class ProductServiceImpl implements ProductService {
 		// This line will check this student is exit
 		// then it will update it
 		productDAO.findOne(product.getId());
-		// pack id=2
-		if (product.getProductUnitType().getId() != null && product.getProductUnitType().getId() != 2) {
-
+		// pack id=1
+		if (product.getProductUnitType() != null && product.getProductUnitType().getId() == 1
+				&& (product.getPacketSize() == null || product.getPacketSize() <= 0)) {
+			throw new CusDataIntegrityViolationException("Packet size is not set");
+		} else {
 			product.setPacketSize(null);
 		}
+		
 		return productDAO.save(product);
 	}
 

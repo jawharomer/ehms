@@ -75,6 +75,26 @@
 							path="productCategory.id" /></td>
 				</tr>
 
+				<tr class="text-info">
+					<td class="text-left"><spring:message code="addProduct.price" /></td>
+					<td><sf:input type="number" class="form-control" path="price" /></td>
+					<td><sf:errors path="price" /></td>
+				</tr>
+
+
+				<c:forEach items="${product.productPriceCategories}" var="item"
+					varStatus="loop">
+					<tr class="text-info">
+						<td class="text-left">${item.priceCategory.name}</td>
+						<td><input
+							name="productPriceCategories[${loop.index}][priceCategory[id]]"
+							value="${item.priceCategory.id}" type="hidden"> <input
+							class="form-control"
+							name="productPriceCategories[${loop.index}][price]" type="number"
+							value="${item.price}"></td>
+					</tr>
+				</c:forEach>
+
 				<tr>
 					<td><button class="btn btn-warning" type="submit">
 							<i class="fa fa-edit"></i>
@@ -96,9 +116,9 @@
 
 	function changeProductUnit() {
 		console.log("changeProductUnit->fired");
-		var unitType = $('#productUnit option:selected').text();
+		var unitType = $('#productUnit option:selected').val();
 		console.log("unitType=" + unitType);
-		if (unitType != "pack") {
+		if (unitType != 1) {
 			$("#packetSize").val("");
 			$("#packetSize").prop('disabled', true);
 		} else {
@@ -110,22 +130,23 @@
 	function modalEditProduct(event) {
 		console.log("modalEditProduct->fired");
 		event.preventDefault();
-		var data = JSON.stringify($("#editProductForm").serializeJSON());
+		var data = $("#editProductForm").serializeJSON({
+			useIntKeysAsArrayIndex : true
+		});
 		console.log("data=", data);
 		$.ajax({
 			type : "POST",
 			url : "<c:url value="/products/update"/>",
-			data : data,
+			data : JSON.stringify(data),
 			headers : {
 				"X-CSRF-TOKEN" : csrf
 			},
 			contentType : "application/json",
-			success : function(data) {
-				console.log("data=", data);
-				$("#edit-product-container").html(data);
+			success : function(response) {
+				$("#modal-body").html(response);
 			},
-			failure : function(errMsg) {
-				alert(errMsg);
+			error : function(response) {
+				$("#modal-body").html(response.responseText);
 			}
 		});
 	}

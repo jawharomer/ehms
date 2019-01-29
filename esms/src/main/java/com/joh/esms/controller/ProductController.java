@@ -1,5 +1,9 @@
 package com.joh.esms.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.joh.esms.domain.model.ProductD;
+import com.joh.esms.model.PriceCategory;
 import com.joh.esms.model.Product;
 import com.joh.esms.model.ProductCategory;
+import com.joh.esms.model.ProductPriceCategory;
 import com.joh.esms.model.ProductUnitType;
+import com.joh.esms.service.PriceCategoryService;
 import com.joh.esms.service.ProductCategorySevice;
 import com.joh.esms.service.ProductService;
 import com.joh.esms.service.ProductUnitTypeService;
@@ -36,7 +43,7 @@ public class ProductController {
 	private ProductCategorySevice productCategorySevice;
 
 	@Autowired
-	private ReportService reportService;
+	private PriceCategoryService priceCategoryService;
 
 	@Autowired
 	private ProductUnitTypeService productUnitTypeService;
@@ -45,6 +52,8 @@ public class ProductController {
 	private String getAddingProduct(Model model) {
 		logger.info("getAddingProduct->fired");
 
+		Product product = new Product();
+
 		Iterable<ProductCategory> productCategories = productCategorySevice.findAll();
 
 		logger.info("productCategories=" + productCategories);
@@ -52,10 +61,18 @@ public class ProductController {
 		Iterable<ProductUnitType> productUnitTypes = productUnitTypeService.findAll();
 		logger.info("productUnitTypes=" + productUnitTypes);
 
+		product.setProductPriceCategories(priceCategoryService.findAll().stream().map(e -> {
+			ProductPriceCategory p = new ProductPriceCategory();
+			p.setPriceCategory(e);
+			return p;
+		}).collect(Collectors.toList()));
+
 		model.addAttribute("productCategories", productCategories);
 		model.addAttribute("productUnitTypes", productUnitTypes);
 
-		model.addAttribute("product", new Product());
+		logger.info("product=" + product);
+
+		model.addAttribute("product", product);
 
 		return "product/addProduct";
 	}
@@ -114,6 +131,17 @@ public class ProductController {
 		model.addAttribute("productUnitTypes", productUnitTypes);
 
 		Product product = productService.findOne(id);
+
+		product.setProductPriceCategories(priceCategoryService.findAll().stream().map(e -> {
+			ProductPriceCategory p;
+			p = product.getProductPriceCategories().stream().filter(i -> i.getPriceCategory().getId() == e.getId())
+					.findAny().orElse(null);
+			if (p == null)
+				p = new ProductPriceCategory();
+			p.setPriceCategory(e);
+			return p;
+		}).collect(Collectors.toList()));
+
 		logger.info("product=" + product);
 
 		model.addAttribute("product", product);

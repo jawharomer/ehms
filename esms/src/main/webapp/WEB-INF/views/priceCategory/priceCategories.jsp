@@ -11,20 +11,22 @@
 
 <div>
 
-	<h2>Price Categories</h2>
+	<h2>
+		<spring:message code="priceCategories.title" />
+	</h2>
 
-	<div class="add-new-doctor-div">
-		<button class="btn btn-outline-primary"
-			onclick="getAddingPriceCategory()">Add</button>
+	<div class="py-1">
+		<button class="btn btn-success" onclick="getAddingPriceCategory()">
+			<i class="fa fa-plus"></i>
+		</button>
 	</div>
 
-	<table class="table">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<td>Doctor Name</td>
-				<td>Doctor Phone</td>
-				<td>Profit</td>
-				<td>Function</td>
+				<td>#</td>
+				<td><spring:message code="priceCategories.name" /></td>
+				<td><spring:message code="priceCategories.function" /></td>
 			</tr>
 		</thead>
 		<tbody>

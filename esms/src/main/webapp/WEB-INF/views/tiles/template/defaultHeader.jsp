@@ -6,7 +6,7 @@
 
 	<a class="navbar-brand" href="<c:url value="/adminRoot" />"> <img
 		src="<c:url value="/resources/img/logo.png" />" height="50" alt="">
-		<b style="color: #F1008C">BHMS</b>
+		<b class="color-primary">ESMS</b>
 	</a>
 
 	<form action="<c:url value="/logout" />" method="POST">
@@ -14,7 +14,9 @@
 			value="${_csrf.token}">
 		<div>
 			<span><sec:authentication property="principal.username" /></span>
-			<button class="btn btn-outline-primary">logout</button>
+			<button class="btn btn-outline-danger">
+			<i class="fa fa-power-off"></i>
+			</button>
 		</div>
 	</form>
 </nav>

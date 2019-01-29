@@ -1,11 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div id="edit-product-category-container">
-
-	Edit  ProductCategory
-
 	<sf:form id="edit-product-category-form" method="POST"
 		commandName="productCategory" onsubmit="editProductCategory(event)">
 
@@ -16,14 +14,16 @@
 			<tbody>
 
 				<tr>
-					<td class="text-left">Name</td>
+					<td class="text-left"><spring:message
+							code="editProductCategory.name" /></td>
 					<td><sf:input class="form-control" path="name" /></td>
 					<td><sf:errors path="name" /></td>
 				</tr>
 
 				<tr>
-					<td><input class="btn btn-outline-primary" type="submit"
-						value="Add"></td>
+					<td><button class="btn btn-warning">
+							<i class="fa fa-edit"></i>
+						</button></td>
 				</tr>
 
 			</tbody>
@@ -36,8 +36,7 @@
 
 
 <script>
-
-var csrf='${_csrf.token}';
+	var csrf = '${_csrf.token}';
 	function editProductCategory(event) {
 		event.preventDefault();
 		console.log("editProductCategory->fired");
@@ -47,8 +46,8 @@ var csrf='${_csrf.token}';
 		$.ajax({
 			type : "POST",
 			url : "<c:url value="/productCategories/update"/>",
-			headers:{
-				'X-CSRF-TOKEN':csrf
+			headers : {
+				'X-CSRF-TOKEN' : csrf
 			},
 			data : JSON.stringify(data),
 			contentType : "application/json",
@@ -56,7 +55,8 @@ var csrf='${_csrf.token}';
 				$("#edit-product-category-container").html(response);
 			},
 			error : function(response) {
-				$("#edit-product-category-container").html(response.responseText);
+				$("#edit-product-category-container").html(
+						response.responseText);
 			}
 		});
 	}

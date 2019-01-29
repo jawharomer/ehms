@@ -27,7 +27,9 @@
 				<th><spring:message code="stock.stockLevel" /></th>
 				<th><spring:message code="stock.cost" /></th>
 				<th><spring:message code="stock.packetSize" /></th>
-				<th class="cus-not-export"><spring:message code="stock.function" /></th>
+				<th><spring:message code="stock.price" /></th>
+				<th class="cus-not-export"><spring:message
+						code="stock.function" /></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,6 +42,7 @@
 					<td>${productD.stockLevel}</td>
 					<td>${productD.cost}</td>
 					<td>${productD.packetSize}</td>
+					<td>${productD.price}</td>
 					<td>
 						<div class="cus-table-function-div">
 							<button class="btn btn-outline-danger btn-sm"
@@ -69,8 +72,8 @@
 				<th>UnitType</th>
 				<th>StockLevel</th>
 				<th>Cost</th>
-				<th>Price</th>
 				<th>Packet Size</th>
+				<th>Price</th>
 				<th class="cus-not-search"></th>
 			</tr>
 		</tfoot>

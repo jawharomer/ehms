@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div>
 	<sf:form id="add-price-category-form" method="POST"
@@ -10,7 +11,7 @@
 			<tbody>
 
 				<tr>
-					<td>Name</td>
+					<td><spring:message code="addPriceCategory.name" /></td>
 					<td><sf:input cssClass="form-control form-control-sm"
 							path="name" /></td>
 					<td><sf:errors path="name" /></td>

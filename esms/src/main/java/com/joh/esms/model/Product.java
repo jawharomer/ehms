@@ -1,5 +1,9 @@
 package com.joh.esms.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -51,6 +56,13 @@ public class Product {
 
 	@Column(name = "PACKET_SIZE")
 	private Integer packetSize;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "I_PRODUCT")
+	private List<ProductPriceCategory> productPriceCategories = new ArrayList<>();
+
+	@Column(name = "PRICE")
+	private Double price;
 
 	public int getId() {
 		return id;
@@ -100,10 +112,27 @@ public class Product {
 		this.packetSize = packetSize;
 	}
 
+	public List<ProductPriceCategory> getProductPriceCategories() {
+		return productPriceCategories;
+	}
+
+	public void setProductPriceCategories(List<ProductPriceCategory> productPriceCategories) {
+		this.productPriceCategories = productPriceCategories;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", productUnitType=" + productUnitType
-				+ ", productCategory=" + productCategory + ", packetSize=" + packetSize + "]";
+				+ ", productCategory=" + productCategory + ", packetSize=" + packetSize + ", productPriceCategories="
+				+ productPriceCategories + ", price=" + price + "]";
 	}
 
 }

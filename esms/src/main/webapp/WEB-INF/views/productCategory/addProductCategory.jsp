@@ -1,11 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div id="add-product-category-container">
-
-	Adding new ProductCategory
-
 	<sf:form id="add-product-category-form" method="POST"
 		commandName="productCategory" onsubmit="addProductCategory(event)">
 
@@ -14,14 +12,16 @@
 			<tbody>
 
 				<tr>
-					<td class="text-left">Name</td>
+					<td class="text-left"><spring:message
+							code="addProductCategory.name" /></td>
 					<td><sf:input class="form-control" path="name" /></td>
 					<td><sf:errors path="name" /></td>
 				</tr>
 
 				<tr>
-					<td><input class="btn btn-outline-primary" type="submit"
-						value="Add"></td>
+					<td><button class="btn btn-success">
+							<i class="fa fa-plus"></i>
+						</button></td>
 				</tr>
 
 			</tbody>

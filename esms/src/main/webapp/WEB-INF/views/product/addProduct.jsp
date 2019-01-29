@@ -5,10 +5,6 @@
 
 <div id="add-product-container" style="padding: 5px; overflow: auto">
 
-	<h4>
-		<spring:message code="addProduct.title" />
-	</h4>
-
 	<sf:form id="add-product-form" method="POST" commandName="product"
 		onsubmit="addProduct(event)">
 		<table>
@@ -41,7 +37,6 @@
 					<td><sf:errors path="productUnitType" /></td>
 				</tr>
 
-
 				<tr>
 					<td class="text-left"><spring:message
 							code="addProduct.packetSize" /></td>
@@ -65,8 +60,28 @@
 							path="productCategory.id" /></td>
 				</tr>
 
+				<tr class="text-info">
+					<td class="text-left"><spring:message code="addProduct.price" /></td>
+					<td><sf:input type="number" class="form-control" path="price" /></td>
+					<td><sf:errors path="price" /></td>
+				</tr>
+
+
+				<c:forEach items="${product.productPriceCategories}" var="item"
+					varStatus="loop">
+					<tr class="text-info">
+						<td class="text-left">${item.priceCategory.name}</td>
+						<td><input
+							name="productPriceCategories[${loop.index}][priceCategory[id]]"
+							value="${item.priceCategory.id}" type="hidden"> <input
+							class="form-control"
+							name="productPriceCategories[${loop.index}][price]"
+							value="${item.price}" type="number"></td>
+					</tr>
+				</c:forEach>
+
 				<tr>
-					<td><button class="btn btn-outline-primary" type="submit">
+					<td><button class="btn btn-success" type="submit">
 							<i class="fa fa-plus"></i>
 						</button></td>
 				</tr>
@@ -89,9 +104,9 @@
 
 	function changeProductUnit() {
 		console.log("changeProductUnit->fired");
-		var unitType = $('#productUnit option:selected').text();
+		var unitType = $('#productUnit option:selected').val();
 		console.log("unitType=" + unitType);
-		if (unitType != "pack") {
+		if (unitType != 1) {
 			$("#packetSize").val("");
 			$("#packetSize").prop('disabled', true);
 		} else {
@@ -103,7 +118,9 @@
 	function addProduct(event) {
 		event.preventDefault();
 		console.log("addProduct->fired");
-		var data = $("#add-product-form").serializeJSON();
+		var data = $("#add-product-form").serializeJSON({
+			useIntKeysAsArrayIndex : true
+		});
 
 		console.log("data=", data);
 		$.ajax({
@@ -115,11 +132,10 @@
 			data : JSON.stringify(data),
 			contentType : "application/json",
 			success : function(response) {
-				$("#add-product-container").html(response);
+				$("#modal-body").html(response);
 			},
 			error : function(response) {
-				console.log("response=", response);
-				$("#add-product-container").html(response.responseText);
+				$("#modal-body").html(response.responseText);
 			}
 		});
 	}

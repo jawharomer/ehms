@@ -20,7 +20,7 @@ public class ProductDAOImpl implements ProductDAOExt {
 
 		Query query = em.createNativeQuery("SELECT P.I_PRODUCT,P.PRODUCT_CODE,P.PRODUCT_NAME,PUT.UNIT_TYPE_NAME,\n"
 				+ "IFNULL(SUM(QUANTITY-SOLD_QUANTITY),0) AS STOCK_LEVEL,\n"
-				+ "ROUND(SUM(PAYMENT_AMOUNT)/SUM(QUANTITY),3) as COST,PC.CATEGORY_NAME AS CATEGORY,PACKET_SIZE\n"
+				+ "ROUND(SUM(PAYMENT_AMOUNT)/SUM(QUANTITY),3) as COST,P.PRICE,PC.CATEGORY_NAME AS CATEGORY,PACKET_SIZE\n"
 				+ "FROM PRODUCTS P LEFT OUTER JOIN PRODUCT_UNIT_TYPES PUT USING(I_PRODUCT_UNIT_TYPE) LEFT OUTER JOIN PRODUCT_CATEGORIES PC USING(I_PRODUCT_CATEGORY) \n"
 				+ "LEFT OUTER JOIN PRODUCT_STEPUPS PS ON P.I_PRODUCT=PS.I_PRODUCT AND QUANTITY-SOLD_QUANTITY AND EXPIRATION_DATE>CURDATE() GROUP BY P.I_PRODUCT\n"
 				+ "ORDER BY PRODUCT_CODE");
@@ -36,9 +36,10 @@ public class ProductDAOImpl implements ProductDAOExt {
 			productD.setUnitType((String) row[3]);
 			productD.setStockLevel(Integer.parseInt("" + row[4]));
 			productD.setCost((Double) row[5]);
-			productD.setCategory((String) row[6]);
-			if (row[7] != null)
-				productD.setPacketSize((Integer) row[7]);
+			productD.setPrice((Double) row[6]);
+			productD.setCategory((String) row[7]);
+			if (row[8] != null)
+				productD.setPacketSize((Integer) row[8]);
 
 			productDs.add(productD);
 		}

@@ -4,6 +4,7 @@
 <%@ taglib prefix='fn' uri='http://java.sun.com/jsp/jstl/functions'%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate var="currentDate" value="${now}" pattern="yyyy-MM-dd" />
@@ -16,18 +17,24 @@
 
 <div ng-app="adminProductCategories"
 	ng-controller="adminProductCategories" class="admin-doctors">
+	
+	<h2>
+		<spring:message code="productCategories.title" />
+	</h2>
+	
 
-	<div class="add-new-doctor-div">
-		<button class="btn btn-outline-primary"
-			ng-click="getAddingProductCategory()">Add</button>
+	<div class="py-1">
+		<button class="btn btn-success" ng-click="getAddingProductCategory()">
+			<i class="fa fa-plus"></i>
+		</button>
 	</div>
 
-	<table class="table">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<td>#ID</td>
-				<td>Name</td>
-				<td>Functions</td>
+				<td>#</td>
+				<td><spring:message code="productCategories.name" /></td>
+				<td><spring:message code="productCategories.function" /></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,10 +46,14 @@
 					<td>${item.name}</td>
 					<td>
 						<div>
-							<button class="btn btn-outline-danger"
-								ng-click="deleteProductCategory(${item.id})">Delete</button>
-							<button class="btn btn-outline-warning"
-								ng-click="editProductCategory(${item.id})">Edit</button>
+							<button class="btn btn-danger"
+								ng-click="deleteProductCategory(${item.id})">
+								<i class="fa fa-times"></i>
+							</button>
+							<button class="btn btn-warning"
+								ng-click="editProductCategory(${item.id})">
+								<i class="fa fa-edit"></i>
+							</button>
 						</div>
 					</td>
 

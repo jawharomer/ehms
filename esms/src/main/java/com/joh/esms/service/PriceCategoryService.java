@@ -1,10 +1,12 @@
 package com.joh.esms.service;
 
+import java.util.List;
+
 import com.joh.esms.model.PriceCategory;
 
 public interface PriceCategoryService {
 
-	Iterable<PriceCategory> findAll();
+	List<PriceCategory> findAll();
 
 	PriceCategory save(PriceCategory priceCategory);
 

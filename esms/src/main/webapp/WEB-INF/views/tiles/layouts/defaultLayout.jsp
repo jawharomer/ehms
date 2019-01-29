@@ -10,9 +10,10 @@
 
 <c:set var="preCache"><%=LocalDateTime.now()%></c:set>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html;UTF-8">
+<meta charset="UTF-8" />
 <title><tiles:getAsString name="title" /></title>
 <tiles:importAttribute name="requiredCSSFiles" />
 <c:if test="${!empty requiredCSSFiles}">

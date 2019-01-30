@@ -32,6 +32,7 @@
 		define( ['jquery'], function ( $ ) {
 			return factory( $, window, document );
 		} );
+		
 	}
 	else if ( typeof exports === 'object' ) {
 		// CommonJS

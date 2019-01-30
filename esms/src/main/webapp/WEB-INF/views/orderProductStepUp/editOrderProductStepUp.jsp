@@ -16,12 +16,14 @@
 
 <div ng-app="addCustomerOrder" ng-controller="addCustomerOrder"
 	ng-init="init()">
-	<h2>Edit Order</h2>
+	<h2>
+		<spring:message code="editOrderProductStepUp.title" />
+	</h2>
 
 	<table class="table table-sm cus-table-borderless">
 		<tbody ng-form="orderProductStepUpForm">
 			<tr>
-				<td>Vendor</td>
+				<td><spring:message code="editOrderProductStepUp.vendor" /></td>
 				<td><select required class="form-control form-control-sm"
 					ng-model="orderProductStepUp.vendor.id"
 					ng-options="item.id as item.fullName for item in vendors">
@@ -29,14 +31,15 @@
 				</select></td>
 			</tr>
 			<tr>
-				<td title="Most of the time Vendor's Invoice ID">Reference</td>
-				<td><input type="number"
-					ng-model="orderProductStepUp.referecneInvoiceId"
+				<td title="Most of the time Vendor's Invoice ID"><spring:message
+						code="editOrderProductStepUp.reference" /></td>
+				<td><input ng-model="orderProductStepUp.referecneInvoiceId"
 					class="form-control  form-control-sm"></td>
 			</tr>
 
 			<tr>
-				<td title="Discount 0-1">Discount</td>
+				<td title="Discount 0-1"><spring:message
+						code="editOrderProductStepUp.discount" /></td>
 				<td><input type="number" min="0" max="1"
 					ng-model="orderProductStepUp.discount"
 					class="form-control  form-control-sm"></td>
@@ -49,15 +52,16 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<td>PS#</td>
-					<td>P-Name</td>
-					<td>P-Code</td>
-					<td>P-Unit Type</td>
-					<td>QTY</td>
-					<td>EXP-Date</td>
-					<td>Bonus-QTY</td>
-					<td>Payment</td>
-					<td>Note</td>
+					<td>#</td>
+					<td><spring:message code="editOrderProductStepUp.pName" /></td>
+					<td><spring:message code="editOrderProductStepUp.pCode" /></td>
+					<td><spring:message code="editOrderProductStepUp.pUnitType" /></td>
+					<td><spring:message code="editOrderProductStepUp.quantity" /></td>
+					<td><spring:message code="editOrderProductStepUp.expDate" /></td>
+					<td><spring:message
+							code="editOrderProductStepUp.bonusQuantity" /></td>
+					<td><spring:message code="editOrderProductStepUp.payment" /></td>
+					<td><spring:message code="editOrderProductStepUp.note" /></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr ng-form="newProductStepUpForm">
@@ -76,7 +80,7 @@
 						ng-model="productStepUp.quantity"
 						class="form-control form-control-sm">
 						{{productStepUp.product.packetSize}}</td>
-					<td><input id="newProductStepUpExpirationDate" required
+					<td><input id="newProductStepUpExpirationDate"
 						ng-model="productStepUp.expirationDate"
 						class="form-control form-control-sm"></td>
 					<td><input type="number" min="1"
@@ -121,7 +125,8 @@
 
 	<div class="border-top pt-2">
 		<div>
-			Total Payment&nbsp;<input ng-value="totalPaymentAmount()|number"
+			<spring:message code="editOrderProductStepUp.totalPayment" />
+			&nbsp;<input ng-value="totalPaymentAmount()|number"
 				style="width: 200px"
 				class="d-inline-block form-control form-control-sm"
 				disabled="disabled">

@@ -43,27 +43,32 @@
 					href="<c:url value="/priceCategories"/>"> <spring:message
 							code="layout.priceCategory" /></a></li>
 
-				<!--  
 				<li class="list-group-item"><a
-					href="<c:url value="/orderProductStepUps/add"/>">Order</a></li>
+					href="<c:url value="/orderProductStepUps/add"/>"> <spring:message
+							code="layout.order" />
+				</a></li>
 				<li class="list-group-item"><a
 					href="<c:url value="/orderProductStepUps"/>?from=${currentDate}&to=${tomorrow}">
-						View Orders</a></li>
+						<spring:message code="layout.viewOrders" />
+				</a></li>
+
+				<li class="list-group-item"><a href="<c:url value="/vendors"/>">
+						<spring:message code="layout.vendors" /></a></li>
+
+				<!--  
 				<li class="list-group-item"><a href="<c:url value="/doctors"/>">Doctors</a></li>
 				<li class="list-group-item"><a
 					href="<c:url value="/productStepUps/search/expirationDate"/>?from=${currentDate}&to=${tomorrow}">
 						Stock By Expiration</a></li>
-				<li class="list-group-item"><a href="<c:url value="/vendors"/>">
-						Vendors</a></li>
-				
+
+
 
 				<li class="text-info list-group-item"><a
 					href="<c:url value="/customerOrders/sold"/>?from=${currentDate}&to=${tomorrow}">
 						Product Sold</a></li>
 				<li class="list-group-item"><a
 					href="<c:url value="/customerOrders/return"/>">Return Product</a></li>
-                  -->
-
+              -->
 			</sec:authorize>
 
 		</ul>

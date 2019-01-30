@@ -1,49 +1,50 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div id="edit-vendor-container">
-
-	Edit Vendor
-
 	<sf:form id="edit-vendor-form" method="POST" commandName="vendor"
 		onsubmit="addVendor(event)">
-		
+
 		<sf:input path="id" type="hidden" />
 
 		<table>
 			<tbody>
 
 				<tr>
-					<td class="text-left">FullName</td>
+					<td class="text-left"><spring:message
+							code="editVendor.fullName" /></td>
 					<td><sf:input class="form-control" path="fullName" /></td>
 					<td><sf:errors path="fullName" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">Phone</td>
+					<td class="text-left"><spring:message code="editVendor.phone" /></td>
 					<td><sf:input class="form-control" path="phone" /></td>
 					<td><sf:errors path="phone" /></td>
 				</tr>
 
 
 				<tr>
-					<td class="text-left">Address</td>
+					<td class="text-left"><spring:message
+							code="editVendor.address" /></td>
 					<td><sf:input class="form-control" path="address" /></td>
 					<td><sf:errors path="address" /></td>
 				</tr>
 
 
 				<tr>
-					<td class="text-left">Note</td>
+					<td class="text-left"><spring:message code="editVendor.note" /></td>
 					<td><sf:textarea class="form-control" path="note" /></td>
 					<td><sf:errors path="note" /></td>
 				</tr>
 
 
 				<tr>
-					<td><input class="btn btn-outline-warning" type="submit"
-						value="Edit"></td>
+					<td><button class="btn btn-warning">
+							<i class="fa fa-edit"></i>
+						</button></td>
 				</tr>
 
 			</tbody>

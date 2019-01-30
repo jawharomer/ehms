@@ -26,13 +26,13 @@ public class ProductStepUp {
 	@Column(name = "I_PRODUCT_STEPUP")
 	private Integer id;
 
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "I_PRODUCT", nullable = false)
 	private Product product;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
-	@Column(name = "EXPIRATION_DATE", nullable = false)
+	@Column(name = "EXPIRATION_DATE")
 	private Date expirationDate;
 
 	@Column(name = "QUANTITY", nullable = false)
@@ -120,7 +120,6 @@ public class ProductStepUp {
 	public void setSoldQuantity(Integer soldQuantity) {
 		this.soldQuantity = soldQuantity;
 	}
-	
 
 	@Override
 	public String toString() {

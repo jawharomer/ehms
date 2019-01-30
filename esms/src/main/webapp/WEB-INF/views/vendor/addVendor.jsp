@@ -1,10 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div id="add-vendor-container">
-
-	Adding new Vendor
 
 	<sf:form id="add-vendor-form" method="POST" commandName="vendor"
 		onsubmit="addVendor(event)">
@@ -14,35 +13,37 @@
 			<tbody>
 
 				<tr>
-					<td class="text-left">FullName</td>
+					<td class="text-left"><spring:message
+							code="addVendor.fullName" /></td>
 					<td><sf:input class="form-control" path="fullName" /></td>
 					<td><sf:errors path="fullName" /></td>
 				</tr>
 
 				<tr>
-					<td class="text-left">Phone</td>
+					<td class="text-left"><spring:message code="addVendor.phone" /></td>
 					<td><sf:input class="form-control" path="phone" /></td>
 					<td><sf:errors path="phone" /></td>
 				</tr>
 
 
 				<tr>
-					<td class="text-left">Address</td>
+					<td class="text-left"><spring:message code="addVendor.address" /></td>
 					<td><sf:input class="form-control" path="address" /></td>
 					<td><sf:errors path="address" /></td>
 				</tr>
 
 
 				<tr>
-					<td class="text-left">Note</td>
+					<td class="text-left"><spring:message code="addVendor.note" /></td>
 					<td><sf:textarea class="form-control" path="note" /></td>
 					<td><sf:errors path="note" /></td>
 				</tr>
 
 
 				<tr>
-					<td><input class="btn btn-outline-primary" type="submit"
-						value="Add"></td>
+					<td><button class="btn btn-success">
+							<i class="fa fa-plus"></i>
+						</button></td>
 				</tr>
 
 			</tbody>
@@ -66,7 +67,7 @@
 			type : "POST",
 			url : "<c:url value="/vendors/add"/>",
 			headers : {
-             'X-CSRF-TOKEN':csrf
+				'X-CSRF-TOKEN' : csrf
 			},
 			data : JSON.stringify(data),
 			contentType : "application/json",

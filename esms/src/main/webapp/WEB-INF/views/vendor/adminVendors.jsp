@@ -15,18 +15,24 @@
 <div ng-app="adminVendors" ng-controller="adminVendors"
 	class="admin-doctors">
 
+	<h2>
+		<spring:message code="adminVendor.title" />
+	</h2>
+
 	<div class="add-new-doctor-div">
-		<button class="btn btn-outline-primary" ng-click="getAddingVendor()">Add</button>
+		<button class="btn btn-success" ng-click="getAddingVendor()">
+			<i class="fa fa-plus"></i>
+		</button>
 	</div>
 
-	<table class="table">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<td>Full Name</td>
-				<td>Phone</td>
-				<td>Address</td>
-				<td>Note</td>
-				<td>Function</td>
+				<td><spring:message code="adminVendor.fullName" /></td>
+				<td><spring:message code="adminVendor.phone" /></td>
+				<td><spring:message code="adminVendor.address" /></td>
+				<td><spring:message code="adminVendor.note" /></td>
+				<td><spring:message code="adminVendor.function" /></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,10 +46,13 @@
 					<td>${item.note}</td>
 					<td>
 						<div>
-							<button class="btn btn-outline-danger"
-								ng-click="deleteVendor(${item.id})">Delete</button>
-							<button class="btn btn-outline-warning"
-								ng-click="editVendor(${item.id})">Edit</button>
+							<button class="btn btn-danger"
+								ng-click="deleteVendor(${item.id})">
+								<i class="fa fa-times"></i>
+							</button>
+							<button class="btn btn-warning" ng-click="editVendor(${item.id})">
+								<i class="fa fa-edit"></i>
+							</button>
 						</div>
 					</td>
 

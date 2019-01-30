@@ -8,7 +8,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<c:set var="preCache"><%=1/*LocalDateTime.now()*/%></c:set>
+<c:set var="preCache"><%=2/*LocalDateTime.now()*/%></c:set>
 <!DOCTYPE html>
 <html lang="en">
 <head>

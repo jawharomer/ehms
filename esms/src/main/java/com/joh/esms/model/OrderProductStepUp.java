@@ -52,7 +52,7 @@ public class OrderProductStepUp {
 	private Date orderTime;
 
 	@Column(name = "REFERENCE_INVOICE_ID")
-	private Integer referecneInvoiceId;
+	private String referecneInvoiceId;
 
 	@Column(name = "TOTAL_PAYMENT_AMOUNT", nullable = false)
 	private Double totalPaymentAmount;
@@ -97,11 +97,11 @@ public class OrderProductStepUp {
 		this.orderTime = orderTime;
 	}
 
-	public Integer getReferecneInvoiceId() {
+	public String getReferecneInvoiceId() {
 		return referecneInvoiceId;
 	}
 
-	public void setReferecneInvoiceId(Integer referecneInvoiceId) {
+	public void setReferecneInvoiceId(String referecneInvoiceId) {
 		this.referecneInvoiceId = referecneInvoiceId;
 	}
 

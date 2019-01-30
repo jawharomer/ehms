@@ -22,7 +22,7 @@ public class ProductDAOImpl implements ProductDAOExt {
 				+ "IFNULL(SUM(QUANTITY-SOLD_QUANTITY),0) AS STOCK_LEVEL,\n"
 				+ "ROUND(SUM(PAYMENT_AMOUNT)/SUM(QUANTITY),3) as COST,P.PRICE,PC.CATEGORY_NAME AS CATEGORY,PACKET_SIZE\n"
 				+ "FROM PRODUCTS P LEFT OUTER JOIN PRODUCT_UNIT_TYPES PUT USING(I_PRODUCT_UNIT_TYPE) LEFT OUTER JOIN PRODUCT_CATEGORIES PC USING(I_PRODUCT_CATEGORY) \n"
-				+ "LEFT OUTER JOIN PRODUCT_STEPUPS PS ON P.I_PRODUCT=PS.I_PRODUCT AND QUANTITY-SOLD_QUANTITY AND EXPIRATION_DATE>CURDATE() GROUP BY P.I_PRODUCT\n"
+				+ "LEFT OUTER JOIN PRODUCT_STEPUPS PS ON P.I_PRODUCT=PS.I_PRODUCT AND QUANTITY-SOLD_QUANTITY AND (EXPIRATION_DATE>CURDATE() OR EXPIRATION_DATE IS NULL) GROUP BY P.I_PRODUCT\n"
 				+ "ORDER BY PRODUCT_CODE");
 
 		List<Object[]> resultList = query.getResultList();
@@ -69,8 +69,8 @@ public class ProductDAOImpl implements ProductDAOExt {
 		productD.setUnitType((String) row[3]);
 		productD.setStockLevel(Integer.parseInt("" + row[4]));
 		productD.setCost((Double) row[5]);
-		if (row[9] != null)
-			productD.setPacketSize((Integer) row[9]);
+		if (row[6] != null)
+			productD.setPacketSize((Integer) row[6]);
 
 		return productD;
 

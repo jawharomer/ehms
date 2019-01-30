@@ -4,6 +4,7 @@
 <%@ taglib prefix='fn' uri='http://java.sun.com/jsp/jstl/functions'%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <script type="text/javascript">
 	var csrf = '${_csrf.token}';
 	console.log("csrf=" + csrf);
@@ -13,7 +14,9 @@
 <div ng-app="productStepUps" ng-controller="productStepUps">
 
 
-	<h2>Orders</h2>
+	<h2>
+		<spring:message code="orderPorductStepUps.title" />
+	</h2>
 	<hr>
 
 	<div>
@@ -21,20 +24,23 @@
 			<table>
 
 				<tr>
-					<td class="text-left">From</td>
+					<td class="text-left"><spring:message
+							code="orderPorductStepUps.from" /></td>
 					<td><input class="form-control" id="from" name="from"
 						value="<fmt:formatDate pattern = "yyyy-MM-dd"  
          value = "${from}" />" /></td>
 				</tr>
 				<tr>
-					<td class="text-left">To</td>
+					<td class="text-left"><spring:message
+							code="orderPorductStepUps.to" /></td>
 					<td><input class="form-control" id="to" name="to"
 						value="<fmt:formatDate pattern = "yyyy-MM-dd" 
          value = "${to}" />" /></td>
 				</tr>
 				<tr>
-					<td><input class="btn btn-outline-info" type="submit"
-						value="View" /></td>
+					<td><button class="btn btn-outline-info" type="submit">
+							<spring:message code="orderPorductStepUps.view" />
+						</button></td>
 				</tr>
 			</table>
 			<hr>
@@ -48,12 +54,12 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Vendor</th>
-					<th>Time</th>
-					<th>Reference</th>
-					<th>TotalPayment</th>
-					<th>Discount</th>
-					<th class="cus-not-export">F</th>
+					<th><spring:message code="orderPorductStepUps.vendor" /></th>
+					<th><spring:message code="orderPorductStepUps.time" /></th>
+					<th><spring:message code="orderPorductStepUps.reference" /></th>
+					<th><spring:message code="orderPorductStepUps.totalPayment" /></th>
+					<th><spring:message code="orderPorductStepUps.discount" /></th>
+					<th class="cus-not-export"><spring:message code="orderPorductStepUps.function" /></th>
 				</tr>
 			</thead>
 			<tbody>

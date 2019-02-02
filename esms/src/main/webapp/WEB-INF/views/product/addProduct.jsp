@@ -62,7 +62,8 @@
 
 				<tr class="text-info">
 					<td class="text-left"><spring:message code="addProduct.price" /></td>
-					<td><sf:input type="number" class="form-control" path="price" /></td>
+					<td><sf:input type="number" step="any" class="form-control"
+							path="price" /></td>
 					<td><sf:errors path="price" /></td>
 				</tr>
 

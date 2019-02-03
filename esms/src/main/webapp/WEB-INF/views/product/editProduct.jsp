@@ -77,7 +77,7 @@
 
 				<tr class="text-info">
 					<td class="text-left"><spring:message code="addProduct.price" /></td>
-					<td><sf:input type="number" class="form-control" path="price" /></td>
+					<td><sf:input type="number" step="any" class="form-control" path="price" /></td>
 					<td><sf:errors path="price" /></td>
 				</tr>
 
@@ -90,7 +90,7 @@
 							name="productPriceCategories[${loop.index}][priceCategory[id]]"
 							value="${item.priceCategory.id}" type="hidden"> <input
 							class="form-control"
-							name="productPriceCategories[${loop.index}][price]" type="number"
+							name="productPriceCategories[${loop.index}][price]" type="number" step="any"
 							value="${item.price}"></td>
 					</tr>
 				</c:forEach>

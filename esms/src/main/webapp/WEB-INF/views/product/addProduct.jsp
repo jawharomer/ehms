@@ -77,7 +77,7 @@
 							value="${item.priceCategory.id}" type="hidden"> <input
 							class="form-control"
 							name="productPriceCategories[${loop.index}][price]"
-							value="${item.price}" type="number"></td>
+							value="${item.price}" type="number" step="any"></td>
 					</tr>
 				</c:forEach>
 
